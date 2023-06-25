@@ -3,8 +3,8 @@
 /**
  * _putchar - Prints a single character
  * @c: Character to be printed
- * A
- * Returns: Number ofbytes printed
+ *
+ * Return: Number of bytes printed
  */
 int _putchar(char c)
 {
@@ -56,9 +56,7 @@ int _printf(const char *format, ...)
 				case 's':
 					s = va_arg(args, char *);
 					if (s == NULL)
-					{
 						s = "null";
-					}
 					count += _puts(s);
 					i += 2;
 					break;
