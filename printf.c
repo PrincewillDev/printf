@@ -1,4 +1,33 @@
 #include "main.h"
+
+/**
+ * _putchar - Prints a single character
+ * @c: Character to be printed
+ * Returns: Number ofbytes printed
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+/**
+ * _puts - a function which prints a string to stdout
+ * @s: a string to print
+ *
+ * Return: the length of the string
+ */
+int _puts(char *s)
+{
+	inti = 0;
+
+	while (s[i] != '\0')
+	{
+		_putchar(s[i]);
+		i++;
+	}
+	return (i);
+}
+
 /**
  * _printf - a function that produces output according to a format
  * @format: character string that directs the format of the output
