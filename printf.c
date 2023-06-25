@@ -3,6 +3,7 @@
 /**
  * _putchar - Prints a single character
  * @c: Character to be printed
+ * A
  * Returns: Number ofbytes printed
  */
 int _putchar(char c)
@@ -15,10 +16,11 @@ int _putchar(char c)
  * @s: a string to print
  *
  * Return: the length of the string
+ * A
  */
 int _puts(char *s)
 {
-	inti = 0;
+	int i = 0;
 
 	while (s[i] != '\0')
 	{
@@ -54,7 +56,9 @@ int _printf(const char *format, ...)
 				case 's':
 					s = va_arg(args, char *);
 					if (s == NULL)
-						s = "(null)";
+					{
+						s = "null";
+					}
 					count += _puts(s);
 					i += 2;
 					break;
