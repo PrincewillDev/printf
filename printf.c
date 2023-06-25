@@ -1,6 +1,35 @@
 #include "main.h"
 
 /**
+ * print_num - Converts integer to string
+ * @num: Integer to be converted
+ * Return: Pointer to a string
+ */
+void print_num(int num)
+{
+	/* Base case 1 */
+	if (num < 0)
+	{
+		_putchar('-');
+		/* Converts number to its absolute value */
+		num = -num;
+	}
+	/* Base case 2 */
+	if (num == 0)
+	{
+		_putchar('0');
+		return;
+	}
+
+	if (num >= 10)
+	{
+		print_num(num / 10);
+	}
+
+	 _putchar('0' + num % 10);
+}
+
+/**
  * _putchar - Prints a single character
  * @c: Character to be printed
  *
@@ -9,16 +38,13 @@
 int _putchar(char c)
 {
 	return (write(1, &c, 1));
-	B
 }
 
 /**
- * B
  * _puts - a function which prints a string to stdout
  * @s: a string to print
  *
  * Return: the length of the string
- * A
  */
 int _puts(char *s)
 {
@@ -65,7 +91,8 @@ int _printf(const char *format, ...)
 				case 'i':
 				case 'd':
 					d = va_arg(args, int);
-					count += _puts(d);
+					count += (sizeof(int));
+					print_num(d);
 
 					i += 2;
 					break;
@@ -76,8 +103,8 @@ int _printf(const char *format, ...)
 				default:
 					count += _putchar(format[i]);
 					i++;
-
-			continue;
+					continue;
+			}
 		}
 		count += _putchar(format[i]);
 		i++;
