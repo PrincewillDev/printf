@@ -1,32 +1,32 @@
 #include "main.h"
 
 /**
- * print_num - Converts integer to string
- * @num: Integer to be converted
+ * _printnum - Converts integer to string
+ * @integer: Integer to be converted
  * Return: Pointer to a string
  */
-void print_num(int num)
+void _printnum(int integer)
 {
 	/* Base case 1 */
-	if (num < 0)
+	if (integer < 0)
 	{
 		_putchar('-');
-		/* Converts number to its absolute value */
-		num = -num;
+		/* Converts integer to its absolute value */
+		integer = -integer;
 	}
 	/* Base case 2 */
-	if (num == 0)
+	if (integer == 0)
 	{
 		_putchar('0');
 		return;
 	}
 
-	if (num >= 10)
+	if (integer >= 10)
 	{
-		print_num(num / 10);
+		_printnum(integer / 10);
 	}
 
-	 _putchar('0' + num % 10);
+	 _putchar('0' + integer % 10);
 }
 
 /**
@@ -66,7 +66,7 @@ int _puts(char *s)
 int _printf(const char *format, ...)
 {	va_list args;
 	char *s;
-	int i = 0, count = 0, d;
+	int i = 0, count = 0, number;
 
 	va_start(args, format);
 	if (format == NULL)
@@ -90,12 +90,12 @@ int _printf(const char *format, ...)
 					break;
 				case 'i':
 				case 'd':
-					d = va_arg(args, int);
-					count += (sizeof(int));
-					print_num(d);
-
+					number = va_arg(args, int);
+					count += (sizeof(number));
+					_printnum(number);
 					i += 2;
 					break;
+
 				case '%':
 					count += _putchar('%');
 					i += 2;
