@@ -55,7 +55,7 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					s = va_arg(args, char *);
-					if (s == NULL)
+					if (s == NULL || s == "")
 						s = "null";
 					count += _puts(s);
 					i += 2;
