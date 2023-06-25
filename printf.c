@@ -9,9 +9,11 @@
 int _putchar(char c)
 {
 	return (write(1, &c, 1));
+	B
 }
 
 /**
+ * B
  * _puts - a function which prints a string to stdout
  * @s: a string to print
  *
@@ -38,7 +40,7 @@ int _puts(char *s)
 int _printf(const char *format, ...)
 {	va_list args;
 	char *s;
-	int i = 0, count = 0;
+	int i = 0, count = 0, d;
 
 	va_start(args, format);
 	if (format == NULL)
@@ -60,6 +62,13 @@ int _printf(const char *format, ...)
 					count += _puts(s);
 					i += 2;
 					break;
+				case 'i':
+				case 'd':
+					d = va_arg(args, int);
+					count += _puts(d);
+
+					i += 2;
+					break;
 				case '%':
 					count += _putchar('%');
 					i += 2;
@@ -67,8 +76,7 @@ int _printf(const char *format, ...)
 				default:
 					count += _putchar(format[i]);
 					i++;
-					break;
-			}
+
 			continue;
 		}
 		count += _putchar(format[i]);
