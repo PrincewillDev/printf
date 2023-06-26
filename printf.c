@@ -74,9 +74,8 @@ int _printf(const char *format, ...)
 				case 's':
 					s = va_arg(args, char *);
 					if (s == NULL)
-					{	s = "null";
-						count += _strlen(s);
-					} count += _puts(s);
+						s = "(null)";
+					count += _puts(s);
 					i += 2;
 					break;
 				case '\0':
