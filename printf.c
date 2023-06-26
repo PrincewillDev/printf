@@ -1,7 +1,5 @@
 #include "main.h"
-
 /**
- * _putchar - Prints a single character
  * @c: Character to be printed
  *
  * Return: Number of bytes printed
