@@ -90,7 +90,6 @@ int _printf(const char *format, ...)
 					i++;
 					break;
 			}
-			continue;
 		}
 		count += _putchar(format[i]);
 		i++;
