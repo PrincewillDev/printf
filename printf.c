@@ -68,16 +68,14 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			switch (format[i + 1])
-			{
-				case 'c':
+			{	case 'c':
 					count += _putchar(va_arg(args, int));
 					i += 2;
 					break;
 				case 's':
 					s = va_arg(args, char *);
 					if (s == NULL)
-					{
-						s = "null";
+					{	s = "null";
 						count += _strlen(s);
 					}
 					count += _puts(s);
