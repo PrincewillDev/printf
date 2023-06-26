@@ -28,28 +28,6 @@ int _puts(char *s)
 }
 
 /**
- * _strlen - a function that counts the string length
- * @str: a pointer to the string
- * Return: the length of the string
- */
-
-unsigned int _strlen(char *str)
-{
-	unsigned int len = 0;
-
-	if (str == NULL)
-	{
-		return (0);
-	}
-
-	while (str[len] != '\0')
-	{
-		len++;
-	}
-
-	return (len);
-}
-/**
  * _printf - a function that produces output according to a format
  * @format: character string that directs the format of the output
  * Return: the number of characters printed, excluding the null byte
