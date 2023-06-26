@@ -14,12 +14,6 @@ void _printnum(int integer)
 		/* Converts integer to its absolute value */
 		integer = -integer;
 	}
-	/* Base case 2 */
-	if (integer == 0)
-	{
-		_putchar('0');
-		return;
-	}
 
 	if (integer >= 10)
 	{
