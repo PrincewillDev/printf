@@ -49,7 +49,6 @@ unsigned int _strlen(char *str)
 
 	return (len);
 }
-
 /**
  * _printf - a function that produces output according to a format
  * @format: character string that directs the format of the output
@@ -77,10 +76,11 @@ int _printf(const char *format, ...)
 					if (s == NULL)
 					{	s = "null";
 						count += _strlen(s);
-					}
-					count += _puts(s);
+					} count += _puts(s);
 					i += 2;
 					break;
+				case '\0':
+					return (-1);
 				case '%':
 					count += _putchar('%');
 					i += 2;
@@ -89,8 +89,7 @@ int _printf(const char *format, ...)
 					count += _putchar(format[i]);
 					i++;
 					break;
-			}
-			continue;
+			} continue;
 		}
 		count += _putchar(format[i]);
 		i++;
