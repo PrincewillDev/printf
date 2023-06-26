@@ -1,35 +1,6 @@
 #include "main.h"
 
 /**
- * _printnum - Converts integer to string
- * @integer: Integer to be converted
- * Return: Pointer to a string
- */
-void _printnum(int integer)
-{
-	/* Base case 1 */
-	if (integer < 0)
-	{
-		_putchar('-');
-		/* Converts integer to its absolute value */
-		integer = -integer;
-	}
-	/* Base case 2 */
-	if (integer == 0)
-	{
-		_putchar('0');
-		return;
-	}
-
-	if (integer >= 10)
-	{
-		_printnum(integer / 10);
-	}
-
-	 _putchar('0' + integer % 10);
-}
-
-/**
  * _putchar - Prints a single character
  * @c: Character to be printed
  *
@@ -59,6 +30,29 @@ int _puts(char *s)
 }
 
 /**
+ * _strlen - a function that counts the string length
+ * @str: a pointer to the string
+ * Return: the length of the string
+ */
+
+unsigned int _strlen(char *str)
+{
+	unsigned int len = 0;
+
+	if (str == NULL)
+	{
+		return (0);
+	}
+
+	while (str[len] != '\0')
+	{
+		len++;
+	}
+
+	return (len);
+}
+
+/**
  * _printf - a function that produces output according to a format
  * @format: character string that directs the format of the output
  * Return: the number of characters printed, excluding the null byte
@@ -66,7 +60,7 @@ int _puts(char *s)
 int _printf(const char *format, ...)
 {	va_list args;
 	char *s;
-	int i = 0, count = 0, number;
+	int i = 0, count = 0;
 
 	va_start(args, format);
 	if (format == NULL)
@@ -84,18 +78,13 @@ int _printf(const char *format, ...)
 				case 's':
 					s = va_arg(args, char *);
 					if (s == NULL)
+					{
 						s = "null";
+						count += _strlen(s);
+					}
 					count += _puts(s);
 					i += 2;
 					break;
-				case 'i':
-				case 'd':
-					number = va_arg(args, int);
-					count += (sizeof(number));
-					_printnum(number);
-					i += 2;
-					break;
-
 				case '%':
 					count += _putchar('%');
 					i += 2;
@@ -103,8 +92,9 @@ int _printf(const char *format, ...)
 				default:
 					count += _putchar(format[i]);
 					i++;
-					continue;
+					break;
 			}
+			continue;
 		}
 		count += _putchar(format[i]);
 		i++;
