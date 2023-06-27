@@ -8,8 +8,8 @@
 
 int _putchar(char c);
 int _puts(char *s);
-unsigned int _strlen(char *str);
-
+int _calcnumofdigits(int number);
+char *numtostr(int num, int digits, char *s);
 int _printf(const char *format, ...);
 
 
