@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 {	va_list args;
 	char *s;
 	char *str;
-	int i = 0, count = 0, d;
+	int i = 0, count = 0, num;
 
 	str = malloc(20 * sizeof(char));
 	if (str == NULL)
@@ -62,8 +62,8 @@ int _printf(const char *format, ...)
 					break;
 				case 'i':
 				case 'd':
-					d = va_arg(args, int);
-					_sprintf(str, "%d", d);
+					num = va_arg(args, int);
+					_sprintf(str, "%d", num);
 					count += _puts(str);
 					i += 2;
 					break;
