@@ -28,14 +28,72 @@ int _puts(char *s)
 }
 
 /**
+ * _calcnumofdigits - Calculates number of digits in a given number
+ * @number: Number received
+ * Return: Number of digits in number
+ */
+int _calcnumofdigits(int number)
+{
+	/* Calculates no of digits in number */
+	int dividend = number, divisor;
+	int digits = 1;
+	/* Add 1 if number is negative */
+	if (number < 0)
+	{
+		digits++;
+		dividend = -number;
+	}
+
+	divisor = 10;
+	while (dividend >= 10)
+	{
+		dividend = dividend / divisor;
+		digits++;
+	}
+	return (digits);
+}
+
+/**
+ * numtostr - Stores an integer var passed in a string
+ * @num: Integer received
+ * @digits: Number of digits in integer
+ * @s: Pointer to allocated memory to hold integer string
+ * Return: Pointer to string containing number digits
+ */
+char *numtostr(int num, int digits, char *s)
+{
+	int i = 0, j = 0, divisor = 1;
+
+	if (num < 0)
+	{
+		s[i] = '-';
+		i++;
+		num = -num;
+	}
+	while (j < digits)
+	{
+		divisor *= 10;
+		j++;
+	}
+	while (i < digits)
+	{
+		divisor /= 10;
+		s[i] = '0' + (num / divisor) % 10;
+		i++;
+	}
+	s[i] = '\0';
+	return (s);
+}
+
+/**
  * _printf - a function that produces output according to a format
  * @format: character string that directs the format of the output
  * Return: the number of characters printed, excluding the null byte
  */
 int _printf(const char *format, ...)
 {	va_list args;
-	char *s;
-	int i = 0, count = 0;
+	char *s, *buff;
+	int i = 0, count = 0, integer, no_of_digits;
 
 	if (format == NULL)
 		return (-1);
@@ -54,6 +112,18 @@ int _printf(const char *format, ...)
 					if (s == NULL)
 						s = "(null)";
 					count += _puts(s);
+					i += 2;
+					break;
+				case 'i':
+				case 'd':
+					integer = va_arg(args, int);
+					no_of_digits = _calcnumofdigits(integer);
+					buff = malloc(sizeof(char) * (no_of_digits + 1));
+					if (buff == NULL)
+						return (-1);
+					_puts(numtostr(integer, no_of_digits, buff));
+					count += no_of_digits;
+					free(buff);
 					i += 2;
 					break;
 				case '\0':
