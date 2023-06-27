@@ -1,32 +1,7 @@
 #include "main.h"
-
 /**
- * _printnum - Converts integer to string
- * @integer: Integer to be converted
- * Return: Pointer to a string
- */
-void _printnum(int integer)
-{
-	/* Base case 1 */
-	if (integer < 0)
-	{
-		_putchar('-');
-		/* Converts integer to its absolute value */
-		integer = -integer;
-	}
-
-	if (integer >= 10)
-	{
-		_printnum(integer / 10);
-	}
-
-	 _putchar('0' + integer % 10);
-}
-
-/**
- * _putchar - Prints a single character
+ * _putchar - prints a char
  * @c: Character to be printed
- *
  * Return: Number of bytes printed
  */
 int _putchar(char c)
@@ -60,36 +35,29 @@ int _puts(char *s)
 int _printf(const char *format, ...)
 {	va_list args;
 	char *s;
-	int i = 0, count = 0, number;
+	int i = 0, count = 0;
 
-	va_start(args, format);
 	if (format == NULL)
 		return (-1);
+	va_start(args, format);
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
 			switch (format[i + 1])
-			{
-				case 'c':
+			{	case 'c':
 					count += _putchar(va_arg(args, int));
 					i += 2;
 					break;
 				case 's':
 					s = va_arg(args, char *);
 					if (s == NULL)
-						s = "null";
+						s = "(null)";
 					count += _puts(s);
 					i += 2;
 					break;
-				case 'i':
-				case 'd':
-					number = va_arg(args, int);
-					count += (sizeof(number));
-					_printnum(number);
-					i += 2;
-					break;
-
+				case '\0':
+					return (-1);
 				case '%':
 					count += _putchar('%');
 					i += 2;
@@ -97,8 +65,8 @@ int _printf(const char *format, ...)
 				default:
 					count += _putchar(format[i]);
 					i++;
-					continue;
-			}
+					break;
+			} continue;
 		}
 		count += _putchar(format[i]);
 		i++;
