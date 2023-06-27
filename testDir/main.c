@@ -38,6 +38,15 @@ int main(void)
     len2 = printf("Percent:[%%]\n");
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
+
+    _printf("INT MAX %d", INT_MAX);
+    printf("INT MAX %d", INT_MAX);
+
+    _printf("INT MIN %d", INT_MIN);
+
+    printf("INT MIN %d", INT_MIN);
+
+
     return (0);
 }
 

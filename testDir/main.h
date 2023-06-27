@@ -4,9 +4,12 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 int _putchar(char c);
-void _puts(char *s);
+int _puts(char *s);
+int _sprintf(char *str, const char *format, ...);
 
+int _printf(const char *format, ...);
 
 #endif /* MAIN_H */

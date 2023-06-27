@@ -35,12 +35,14 @@ int _puts(char *s)
 int _printf(const char *format, ...)
 {	va_list args;
 	char *s;
-	char *str;
+	char *str = malloc(20 * sizeof(char));
 	int i = 0, count = 0, d;
 
-	str = malloc(20 * sizeof(char));
 	if (str == NULL)
+	{
 		return (-1);
+	}
+
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
@@ -60,13 +62,14 @@ int _printf(const char *format, ...)
 					count += _puts(s);
 					i += 2;
 					break;
-				case 'i':
 				case 'd':
+				case 'i':
 					d = va_arg(args, int);
 					_sprintf(str, "%d", d);
 					count += _puts(str);
 					i += 2;
 					break;
+
 				case '\0':
 					return (-1);
 				case '%':
