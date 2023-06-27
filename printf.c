@@ -68,6 +68,7 @@ char *numtostr(int num, int digits, char *s)
 	{
 		s[i] = '-';
 		i++;
+		j++;
 		num = -num;
 	}
 	while (j < digits)
